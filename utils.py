@@ -1,6 +1,10 @@
+import cv2
+import numpy as np
 
-def apply_preprocess(names,src_path,dst_path=None,extension='png',preprocessing_function=[circle_centering],
-                     preprocessing_params=[{}], write=False, prog_bar_disable=False):
+
+
+def apply_preprocess(names,src_path,dst_path=None,extension='png',preprocessing_function=[],
+                     preprocessing_params=[], write=False, prog_bar_disable=False):
     '''
     Applys list of functions to list of images specified by name and path
     

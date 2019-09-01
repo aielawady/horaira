@@ -1,3 +1,7 @@
+import cv2
+import numpy as np
+
+
 def circle_centering(image, circle_detection_method='moments',
                      scale_value = 1, aspect_ratio=1.6, width=224, gray_threshold = 10):
     ''' 

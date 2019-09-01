@@ -1,3 +1,5 @@
+import cv2
+import numpy as np
   
 def crop_augmentor(train_x, train_y, num_per_class, aug_with='pos'):
     '''
