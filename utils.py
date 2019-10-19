@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
-
-
+import os 
+from tqdm import tqdm
+from keras.preprocessing.image import load_img, img_to_array
+import matplotlib.pyplot as plt
+from keras.utils import to_categorical
 
 def apply_preprocess(names,src_path,dst_path=None,extension='png',preprocessing_function=[],
                      preprocessing_params=[], write=False, prog_bar_disable=False):
@@ -61,8 +64,8 @@ def apply_preprocess(names,src_path,dst_path=None,extension='png',preprocessing_
         for func,params in zip(preprocessing_function,preprocessing_params):
             img = func(img,**params)
         if write:
-#             cv2.imwrite(dst_path+name+'.'+extension, img)
-            np.save(dst_path+name, img.astype('uint8'))
+            cv2.imwrite(dst_path+name+'.'+extension, cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+#             np.save(dst_path+name, img.astype('uint8'))
         else:
             img_list.append(img)
     return img_list
@@ -162,3 +165,5 @@ def classes_decoder(y,method='max'):
     elif method=='highest_true':
         masked_array = np.arange(n_classes)*(y>=0.5).astype('int')
         return np.argmax(masked_array,axis=1)
+
+

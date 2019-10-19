@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
-  
-def crop_augmentor(train_x, train_y, num_per_class, aug_with='pos'):
+import os 
+
+def crop_augmentor(train_x, train_y, preprocessed_path, num_per_class, aug_with='pos'):
     '''
     Generate new images by picking pairs of images and randomly replace region of one, quarter or half, by the same region of the other.
 
